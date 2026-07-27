@@ -22,7 +22,7 @@ class Producto(models.Model):
     stock = models.IntegerField(default=0)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     marca = models.CharField(max_length=100, blank=True, null=True)
-    imagen_url = models.URLField(max_length=500, blank=True, null=True)
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     categoria = models.ForeignKey(categoria, on_delete=models.CASCADE, related_name='productos')
 
     class Meta:
