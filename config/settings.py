@@ -116,3 +116,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+import os
+
+# Carpeta en tu computadora donde se guardarán las imágenes subidas
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL desde la cual el navegador pedirá las imágenes
+MEDIA_URL = '/media/'
