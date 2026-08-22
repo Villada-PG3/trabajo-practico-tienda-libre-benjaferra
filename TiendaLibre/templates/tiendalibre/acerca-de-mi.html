@@ -1,85 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acerca de mí - Desarrollador</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .card {
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-        }
-        .avatar {
-            width: 70px;
-            height: 70px;
-            background-color: #2ecc71;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.2rem auto;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 0.4rem;
-            font-size: 1.8rem;
-        }
-        .subtitle {
-            color: #2ecc71;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-        p {
-            color: #666;
-            margin-bottom: 1.8rem;
-            line-height: 1.6;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #7f8c8d;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-        .btn:hover {
-            background-color: #626d6d;
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="avatar"></div>
-        <h1>Acerca del Desarrollador</h1>
-        <div class="subtitle">Desarrollador Django</div>
-        <p>¡Hola! Estoy construyendo <strong>Tienda Libre</strong> como parte de mi formación en desarrollo web, aplicando el patrón de arquitectura MTV.</p>
-        <a href="/" class="btn">Volver al Inicio</a>
-    </div>
-</body>
-</html>
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}Acerca de Mí - TiendaLibre{% endblock %}
+
+{% block content %}
+<div class="bg-white p-4 rounded-3 shadow-sm border">
+    <h2 class="text-secondary mb-3">Sobre Mí 👤</h2>
+    <p>¡Hola! Bienvenido a la sección de información. Este proyecto está desarrollado utilizando Python y Django.</p>
+</div>
+{% endblock %}

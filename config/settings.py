@@ -125,3 +125,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL desde la cual el navegador pedirá las imágenes
 MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

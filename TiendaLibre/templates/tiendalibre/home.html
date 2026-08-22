@@ -1,63 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Libre - Inicio</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-        .btn:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>¡Bienvenido a Tienda Libre!</h1>
-        <p>Tu plataforma de comercio electrónico. Explorá nuestros productos y encontrá lo que buscás.</p>
-        <a href="/acerca-de-mi/" class="btn">Conocer al desarrollador</a>
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}Inicio - TiendaLibre{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold text-primary">¡Bienvenido a TiendaLibre! 🛒</h1>
+        <p class="col-md-8 fs-4">Tu plataforma de comercio electrónico favorita. Explora nuestros productos disponibles.</p>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
