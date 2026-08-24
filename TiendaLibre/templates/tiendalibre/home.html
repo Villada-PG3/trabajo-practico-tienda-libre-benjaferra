@@ -3,27 +3,61 @@
 {% block title %}Inicio - TiendaLibre{% endblock %}
 
 {% block content %}
-<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
-    <div class="container-fluid py-3">
-        <h1 class="display-5 fw-bold text-primary">¡Bienvenido a TiendaLibre! </h1>
-        <p class="col-md-8 fs-4">Tu plataforma de comercio electrónico favorita. Explora nuestros productos disponibles.</p>
+<style>
+    .store-hero { background: linear-gradient(135deg, #172554 0%, #1d4ed8 58%, #38bdf8 100%); border-radius: 1.25rem; color: white; overflow: hidden; position: relative; }
+    .store-hero::after { background: rgba(255, 255, 255, 0.12); border-radius: 50%; content: ""; height: 15rem; position: absolute; right: -4rem; top: -6rem; width: 15rem; }
+    .product-card { border: 0; border-radius: 1rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .product-card:hover { box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.12) !important; transform: translateY(-4px); }
+    .product-icon { align-items: center; background: #eff6ff; border-radius: 0.85rem; color: #1d4ed8; display: flex; font-size: 1.8rem; height: 4rem; justify-content: center; width: 4rem; }
+    .stock-label { font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+</style>
+
+<section class="store-hero mb-5 p-4 p-md-5 shadow-sm">
+    <div class="position-relative z-1">
+        <span class="badge rounded-pill text-bg-light text-primary mb-3">Selección de la semana</span>
+        <h1 class="display-5 fw-bold">¡Bienvenido a TiendaLibre!</h1>
+        <p class="col-lg-7 fs-5 mb-0">Tecnología, hogar y estilo con productos elegidos para vos.</p>
     </div>
-</div>
+</section>
 
 {% if usuario_logueado %}
-    <div class="alert alert-success" role="alert">
-        ¡Bienvenido de nuevo!
+    <div class="align-items-center d-flex justify-content-between mb-4">
+        <div>
+            <p class="text-primary fw-semibold mb-1">Tu selección personalizada</p>
+            <h2 class="h3 mb-0">¡Bienvenido de nuevo!</h2>
+        </div>
+        <span class="badge rounded-pill text-bg-success px-3 py-2">Sesión activa</span>
     </div>
 
     <section>
-        <h2 class="h3 mb-3">{{ titulo }}</h2>
-        <div class="row g-3">
+        <div class="align-items-center d-flex justify-content-between mb-3">
+            <h2 class="h3 mb-0">{{ titulo }}</h2>
+            <span class="text-secondary">{{ productos|length }} opciones</span>
+        </div>
+        <div class="row g-4">
             {% for producto in productos %}
                 <div class="col-md-4">
-                    <article class="card h-100 shadow-sm">
+                    <article class="card h-100 product-card shadow-sm">
                         <div class="card-body">
+                            <div class="d-flex justify-content-between mb-4">
+                                <div class="product-icon">★</div>
+                                {% if producto.stock > 0 %}
+                                    <span class="align-self-start badge rounded-pill text-bg-success stock-label">En stock</span>
+                                {% else %}
+                                    <span class="align-self-start badge rounded-pill text-bg-danger stock-label">Sin stock</span>
+                                {% endif %}
+                            </div>
+                            <p class="small text-uppercase text-secondary fw-semibold mb-1">{{ producto.marca }}</p>
                             <h3 class="h5 card-title">{{ producto.nombre }}</h3>
-                            <p class="card-text fw-bold">${{ producto.precio }}</p>
+                            <p class="card-text text-secondary">{{ producto.descripcion }}</p>
+                            <div class="align-items-end d-flex justify-content-between mt-4">
+                                <span class="fs-4 fw-bold text-dark">${{ producto.precio }}</span>
+                                {% if producto.stock > 0 %}
+                                    <small class="text-success">{{ producto.stock }} disponibles</small>
+                                {% else %}
+                                    <small class="text-danger fw-semibold">Sin stock</small>
+                                {% endif %}
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -33,8 +67,9 @@
         </div>
     </section>
 {% else %}
-    <div class="alert alert-warning" role="alert">
-        Debes iniciar sesión para ver los productos destacados.
+    <div class="alert alert-warning border-0 shadow-sm" role="alert">
+        <h2 class="h5 alert-heading">Descubrí nuestros productos destacados</h2>
+        <p class="mb-0">Debes iniciar sesión para ver la selección completa de la semana.</p>
     </div>
 {% endif %}
 {% endblock %} 
