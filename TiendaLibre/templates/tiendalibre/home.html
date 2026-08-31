@@ -51,7 +51,7 @@
                             <h3 class="h5 card-title">{{ producto.nombre }}</h3>
                             <p class="card-text text-secondary">{{ producto.descripcion }}</p>
                             <div class="align-items-end d-flex justify-content-between mt-4">
-                                <span class="fs-4 fw-bold text-dark">${{ producto.precio }}</span>
+                                <span class="fs-4 fw-bold text-dark">${{ producto.precio|default:"Precio no disponible" }}</span>
                                 {% if producto.stock > 0 %}
                                     <small class="text-success">{{ producto.stock }} disponibles</small>
                                 {% else %}
