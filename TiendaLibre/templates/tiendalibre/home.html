@@ -41,6 +41,14 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between mb-4">
                                 <div class="product-icon">★</div>
+                                {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}" class="card-img-top h-100 w-100 object-fit-cover" alt="{{ producto.nombre }}">
+                                {% else %}
+                            <div class="text-secondary opacity-50">
+                                <i class="bi bi-box-seam display-4"></i>
+                                <p class="small mb-0">Sin imagen</p>
+                            </div>
+                                {% endif %}
                                 {% if producto.stock > 0 %}
                                     <span class="align-self-start badge rounded-pill text-bg-success stock-label">En stock</span>
                                 {% else %}

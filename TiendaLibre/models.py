@@ -24,7 +24,7 @@ class Producto(models.Model):
     marca = models.CharField(max_length=100, blank=True, null=True)
     imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     categoria = models.ForeignKey(categoria, on_delete=models.CASCADE, related_name='productos')
-
+    activo = models.BooleanField(default=True)
     class Meta:
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
