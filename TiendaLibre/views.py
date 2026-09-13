@@ -1,6 +1,6 @@
 from tkinter import NO
 from .models import Producto
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.views.generic import TemplateView
@@ -23,3 +23,10 @@ def catalogo(request):
 def acerca_de_mi(request):
     return render(request, 'tiendalibre/acerca-de-mi.html')
 
+
+# ... tus otras vistas ...
+def detalle_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    return render(
+        request, 'tiendalibre/detalle_producto.html', {'producto': producto}
+    )

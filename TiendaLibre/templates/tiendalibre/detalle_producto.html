@@ -1,0 +1,66 @@
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}{{ producto.nombre }} - Detalle{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Botón Volver -->
+    <a href="{% url 'catalogo' %}" class="btn btn-outline-secondary mb-4">
+        &larr; Volver al catálogo
+    </a>
+
+    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+        <div class="row g-0">
+            <!-- Imagen del producto -->
+            <div class="col-md-6 bg-light text-center d-flex align-items-center justify-content-center p-3" style="min-height: 350px;">
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" class="img-fluid rounded object-fit-cover" alt="{{ producto.nombre }}" style="max-height: 400px;">
+                {% else %}
+                    <div class="text-secondary opacity-50">
+                        <i class="bi bi-box-seam display-1"></i>
+                        <p>Sin imagen disponible</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Información detallada -->
+            <div class="col-md-6 p-4 d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        {% if producto.categoria %}
+                            <span class="badge bg-secondary">{{ producto.categoria.nombre }}</span>
+                        {% endif %}
+                        
+                        {% if producto.stock > 0 %}
+                            <span class="badge bg-success">En stock ({{ producto.stock }} unidades)</span>
+                        {% else %}
+                            <span class="badge bg-danger">Sin stock</span>
+                        {% endif %}
+                    </div>
+
+                    {% if producto.marca %}
+                        <p class="text-uppercase text-muted fw-bold small mb-1">{{ producto.marca }}</p>
+                    {% endif %}
+
+                    <h1 class="h2 fw-bold text-dark mb-3">{{ producto.nombre }}</h1>
+                    
+                    <h3 class="text-primary fw-bold mb-4">
+                        ${{ producto.precio|default:"Consultar precio" }}
+                    </h3>
+
+                    <h5 class="fw-semibold">Descripción:</h5>
+                    <p class="text-secondary leading-relaxed">
+                        {{ producto.descripcion|default:"Este producto no tiene una descripción detallada cargada." }}
+                    </p>
+                </div>
+
+                <div class="border-top pt-3 mt-4">
+                    <p class="text-muted small mb-0">
+                        Publicado el: {{ producto.fecha_creacion|date:"d/m/Y" }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
