@@ -1,12 +1,12 @@
 from django.urls import path
-from .views import HomeView, CatalogoView, acerca_de_mi, detalle_producto 
+from .views import HomeView, CatalogoView, ProductoDetailView, acerca_de_mi
+
 
 urlpatterns = [
-    # Mapeo a CBV usando .as_view()
     path('', HomeView.as_view(), name='home'),
     path('catalogo/', CatalogoView.as_view(), name='catalogo'),
+    path('acerca-de-mi/', acerca_de_mi, name='acerca_de'),
     
-    # Rutas existentes
-    path('acerca-de-mi/', acerca_de_mi, name='acerca_de_mi'),
-    path('producto/<int:pk>/', detalle_producto, name='detalle_producto'),
+    # Ruta de detalle actualizada a CBV
+    path('producto/<int:pk>/', ProductoDetailView.as_view(), name='detalle_producto'),
 ]

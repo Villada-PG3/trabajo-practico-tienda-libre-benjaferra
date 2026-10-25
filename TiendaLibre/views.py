@@ -1,7 +1,7 @@
 from tkinter import NO
 from .models import Producto
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 class HolaTemplateView(TemplateView):
     
@@ -11,13 +11,6 @@ class HolaTemplateView(TemplateView):
 def acerca_de_mi(request):
     return render(request, 'tiendalibre/acerca-de-mi.html')
 
-
-# ... tus otras vistas ...
-def detalle_producto(request, pk):
-    producto = get_object_or_404(Producto, pk=pk)
-    return render(
-        request, 'tiendalibre/detalle_producto.html', {'producto': producto}
-    )
 
 class HomeView(TemplateView):
     template_name = 'tiendalibre/home.html'
@@ -33,4 +26,11 @@ class HomeView(TemplateView):
 class CatalogoView(ListView):
     model = Producto
     template_name = 'tiendalibre/catalogo.html'
-    context_object_name = 'productos'  # Nombre con el que se iterará en el template (en lugar de object_list)
+    context_object_name = 'productos'
+    paginate_by = 6 
+
+
+class ProductoDetailView(DetailView):
+    model = Producto
+    template_name = 'tiendalibre/detalle_producto.html'
+    context_object_name = 'producto' 
