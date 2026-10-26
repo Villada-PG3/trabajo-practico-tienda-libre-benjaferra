@@ -22,5 +22,17 @@
         </li>
       </ul>
     </div>
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Categorías
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategorias">
+        {% for cat in categorias_globales %}
+            <li><a class="dropdown-item" href="{% url 'categoria_detalle' cat.slug %}">{{ cat.nombre }}</a></li>
+        {% empty %}
+            <li><span class="dropdown-item text-muted">Sin categorías</span></li>
+        {% endfor %}
+    </ul>
+</li>
   </div>
 </nav>

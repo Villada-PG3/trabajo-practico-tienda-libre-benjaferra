@@ -22,19 +22,10 @@ from TiendaLibre.views import HolaTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hola/', HolaTemplateView.as_view())
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('hola/', HolaTemplateView.as_view()),
     path('', include('TiendaLibre.urls')),
 ]
 
-# Servir archivos media en desarrollo
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
